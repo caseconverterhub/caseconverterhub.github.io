@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="google-site-verification" content="HoWofmErOOKMSn8dHeXvBTb5cGoEBEB1rQ7Y3CrUYgY" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>CaseConverterHub — Free Text Case Converter: UPPERCASE, Title Case, Sentence Case & More</title>
+<meta name="description" content="CaseConverterHub is a free online text case converter. Instantly change text to UPPERCASE, lowercase, Title Case, Sentence case, Capitalize Each Word, alternating case, remove extra spaces and reverse text — with live word and character counts." />
+<link rel="canonical" href="https://caseconverterhub.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="CaseConverterHub" />
+<meta property="og:title" content="CaseConverterHub — Free Text Case Converter" />
+<meta property="og:description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case and more in one click. Free, instant, and private — your text never leaves your browser." />
+<meta property="og:url" content="https://caseconverterhub.github.io/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="CaseConverterHub — Free Text Case Converter" />
+<meta name="twitter:description" content="One-click case conversion: uppercase, lowercase, title case, sentence case, alternating case, extra-space removal and reverse text." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"CaseConverterHub","url":"https://caseconverterhub.github.io/","description":"Free online text case converter with title case, sentence case, uppercase, lowercase and more."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between title case and sentence case?","acceptedAnswer":{"@type":"Answer","text":"Title case capitalizes the important words in a heading, while sentence case capitalizes only the first word of a sentence and proper nouns. Title case suits headlines and book titles; sentence case suits most web headings and everyday writing."}},{"@type":"Question","name":"Is my text uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. CaseConverterHub converts your text entirely inside your browser, so nothing you paste is sent anywhere or stored."}},{"@type":"Question","name":"Does Title Case capitalize every word?","acceptedAnswer":{"@type":"Answer","text":"No. In title case, short connecting words such as 'the', 'and', 'of' and 'in' stay lowercase unless they are the first or last word. The Capitalize Each Word option capitalizes every single word instead."}}]}
+</script>
+<style>
+:root{
+  --bg:#eaf7ef; --bg2:#dff2e5; --surface:#ffffff; --surface2:#f4fbf6;
+  --ink:#16382b; --ink2:#3d5c4e; --muted:#5d7a6c;
+  --accent:#0c7a55; --accent-dark:#095c40; --accent-soft:#cdeed9;
+  --line:#bcdcc8; --btn:#0c7a55; --btn-ink:#ffffff;
+  --chip:#e2f4e9; --warn:#fdf6e0;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d2018; --bg2:#0a1a13; --surface:#143026; --surface2:#10251d;
+    --ink:#e4f3ea; --ink2:#b9d6c5; --muted:#93b3a2;
+    --accent:#3ecf97; --accent-dark:#7fe3ba; --accent-soft:#1d4534;
+    --line:#2a5240; --btn:#177a57; --btn-ink:#ffffff;
+    --chip:#1b4030; --warn:#2e2a18;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);color:var(--ink);
+  font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--ink);margin:0 0 .55em}
+h1{font-size:2.35rem}
+h2{font-size:1.65rem;margin-top:1.6em}
+h3{font-size:1.22rem;margin-top:1.3em}
+p{margin:0 0 1em}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+a:hover{color:var(--accent-dark)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header.site{border-bottom:1px solid var(--line);background:var(--surface2)}
+.header-in{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;padding:14px 0}
+.brand{font-family:Georgia,serif;font-size:1.35rem;font-weight:700;color:var(--ink);text-decoration:none}
+.brand span{color:var(--accent)}
+nav.main{display:flex;flex-wrap:wrap;gap:2px 4px;margin-left:auto}
+nav.main a{color:var(--ink2);text-decoration:none;padding:10px 12px;border-radius:8px;font-size:.98rem;min-height:40px;display:inline-flex;align-items:center}
+nav.main a:hover,nav.main a.active{color:var(--accent-dark);background:var(--accent-soft)}
+main{padding:34px 0 10px}
+.page{display:none}
+.page.on{display:block}
+.lede{font-size:1.14rem;color:var(--ink2);max-width:46em}
+.toolbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;margin:26px 0 8px}
+label.flabel{display:block;font-weight:600;margin:0 0 8px;font-size:.95rem;letter-spacing:.02em}
+textarea{width:100%;min-height:150px;border:1px solid var(--line);border-radius:10px;padding:14px;font:inherit;font-size:1rem;background:var(--surface2);color:var(--ink);resize:vertical}
+textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.stats{display:flex;flex-wrap:wrap;gap:6px 22px;margin:10px 0 4px;color:var(--muted);font-size:.93rem}
+.stats b{color:var(--ink)}
+.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+button{font:inherit;cursor:pointer;border-radius:9px;border:1px solid var(--accent);background:var(--btn);color:var(--btn-ink);padding:10px 16px;min-height:44px;font-size:.97rem;font-weight:600}
+button:hover{background:var(--accent-dark)}
+button.ghost{background:transparent;color:var(--accent);border-color:var(--line)}
+button.ghost:hover{background:var(--accent-soft);color:var(--accent-dark)}
+button.plain{background:var(--chip);color:var(--ink);border-color:var(--line)}
+button.plain:hover{background:var(--accent-soft)}
+.outlabel{margin-top:18px}
+.toast{background:var(--accent-soft);border:1px solid var(--line);border-radius:9px;padding:10px 14px;margin:12px 0;display:none;font-size:.95rem}
+.toast.show{display:block}
+.note{background:var(--warn);border-radius:10px;padding:14px 18px;margin:20px 0;font-size:.97rem}
+.example{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0;font-size:.95rem;overflow-wrap:anywhere}
+.example .lbl{font-family:inherit;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:4px}
+ul.tight li,ol.tight li{margin-bottom:.45em}
+.artlist h3{margin-bottom:.15em}
+.artlist p{color:var(--ink2)}
+.meta{color:var(--muted);font-size:.9rem}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;font-weight:600;padding:10px 0;min-height:44px}
+details p{color:var(--ink2)}
+footer.site{border-top:1px solid var(--line);margin-top:56px;background:var(--surface2)}
+.footer-in{padding:26px 0 34px;color:var(--ink2);font-size:.95rem}
+.footer-in nav{display:flex;flex-wrap:wrap;gap:4px 18px;margin-bottom:12px}
+.footer-in nav a{color:var(--ink2);padding:6px 0;min-height:36px;display:inline-flex;align-items:center}
+.crumb{font-size:.9rem;color:var(--muted);margin-bottom:14px}
+.crumb a{color:var(--muted)}
+@media (max-width:640px){
+  h1{font-size:1.85rem} h2{font-size:1.4rem}
+  .toolbox{padding:16px}
+  nav.main{margin-left:0}
+  button{flex:1 1 auto}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap header-in">
+    <a class="brand" href="#/">Case<span>Converter</span>Hub</a>
+    <nav class="main" aria-label="Main">
+      <a href="#/" data-nav="home">Converter</a>
+      <a href="#/articles" data-nav="articles">Articles</a>
+      <a href="#/faq" data-nav="faq">FAQ</a>
+      <a href="#/about" data-nav="about">About</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ HOME ============ -->
+<section class="page" id="page-home">
+  <h1>Text Case Converter</h1>
+  <p class="lede">Paste any text and change its capitalization in one click — UPPERCASE, lowercase, Title Case, Sentence case, and more. CaseConverterHub fixes messy capitalization from pasted documents, shouty emails, and all-lowercase notes, instantly and free. Everything happens in your browser; nothing you type is uploaded or stored.</p>
+
+  <div class="toolbox" id="tool">
+    <label class="flabel" for="inputText">Your text</label>
+    <textarea id="inputText" placeholder="Type or paste your text here… e.g. the quick brown fox jumps over the lazy dog." aria-label="Text to convert"></textarea>
+    <div class="stats" aria-live="polite">
+      <span>Characters: <b id="statChars">0</b></span>
+      <span>Characters (no spaces): <b id="statNoSpaces">0</b></span>
+      <span>Words: <b id="statWords">0</b></span>
+      <span>Sentences: <b id="statSentences">0</b></span>
+      <span>Lines: <b id="statLines">0</b></span>
+    </div>
+    <div class="btnrow" role="group" aria-label="Case conversion options">
+      <button type="button" data-convert="upper">UPPERCASE</button>
+      <button type="button" data-convert="lower">lowercase</button>
+      <button type="button" data-convert="title">Title Case</button>
+      <button type="button" data-convert="sentence">Sentence case</button>
+      <button type="button" data-convert="eachword">Capitalize Each Word</button>
+      <button type="button" data-convert="alternating">aLtErNaTiNg CaSe</button>
+      <button type="button" data-convert="camel">camelCase</button>
+      <button type="button" data-convert="pascal">PascalCase</button>
+      <button type="button" data-convert="snake">snake_case</button>
+      <button type="button" data-convert="kebab">kebab-case</button>
+      <button type="button" data-convert="spaces" class="plain">Remove Extra Spaces</button>
+      <button type="button" data-convert="reverse" class="plain">Reverse Text</button>
+    </div>
+    <label class="flabel outlabel" for="outputText">Converted text</label>
+    <textarea id="outputText" readonly placeholder="Your converted text will appear here." aria-label="Converted text"></textarea>
+    <div class="btnrow">
+      <button type="button" id="copyBtn">Copy Result</button>
+      <button type="button" id="downloadBtn" class="ghost">Download .txt</button>
+      <button type="button" id="useAsInputBtn" class="ghost">Use Result as Input</button>
+      <button type="button" id="clearBtn" class="ghost">Clear</button>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+  </div>
+  <p class="meta">Tip: conversions apply to the whole text at once, including multiple paragraphs. The word and character counts above update live as you type, which also makes the box handy as a quick <a href="#/article/capitalization-rules-in-english">writing checker</a> before you publish.</p>
+
+  <h2>What each case means</h2>
+  <p><strong>UPPERCASE</strong> turns every letter into a capital. It is the right choice for acronyms, warning labels, legal headings, and short attention-grabbing labels — but whole paragraphs in uppercase are hard to read and, online, read as shouting. Use it in short bursts.</p>
+  <p><strong>lowercase</strong> removes every capital. It suits casual messages, hashtags, usernames, file names, and code, and it is the fastest way to calm down a paragraph that arrived in all caps: convert it to lowercase first, then apply sentence case to rebuild it properly.</p>
+  <p><strong>Title Case</strong> capitalizes the first letter of the important words in a heading — nouns, verbs, adjectives, and adverbs — while small connecting words such as <em>the</em>, <em>and</em>, <em>of</em>, and <em>in</em> stay lowercase unless they open or close the title. It is the standard for headlines, book titles, and article headings. Our full <a href="#/article/title-case-rules">title case rules</a> guide explains exactly which words qualify.</p>
+  <p><strong>Sentence case</strong> capitalizes only the first word of each sentence, plus proper nouns you restore yourself. It is the default style of everyday prose and, increasingly, of modern web design — most major style guides now prefer it for interface headings because it reads friendly and scans quickly. The differences are subtle but real, and our comparison of <a href="#/article/sentence-case-vs-title-case">sentence case vs title case</a> walks through them side by side.</p>
+  <p><strong>Capitalize Each Word</strong> is title case's simpler cousin: literally every word gets a capital letter, including <em>The</em>, <em>And</em>, and <em>Of</em>. It is common in product names, signage, form labels, and some social media captions where a uniform look matters more than style-guide purity.</p>
+  <p><strong>aLtErNaTiNg CaSe</strong> alternates capitals and small letters letter by letter. It has no place in formal writing, but it is widely used for playful social posts, memes, and mocking-quote formats. Handle with care — it is deliberately hard to read.</p>
+  <p><strong>camelCase, PascalCase, snake_case, and kebab-case</strong> are the naming styles of programming and file organization. If you write code, name variables, or label files, you will meet all four daily; our explainer on <a href="#/article/what-is-camel-case">what camel case is</a> shows where each one belongs.</p>
+  <p><strong>Remove Extra Spaces</strong> tidies text copied from PDFs, emails, and web pages: double spaces collapse into one, stray spaces before punctuation disappear, and lines are trimmed. <strong>Reverse Text</strong> flips your text backwards character by character — fun for puzzles, palindromes, and social posts.</p>
+
+  <div class="example" aria-label="Example conversion">
+    <span class="lbl">Example — one sentence, six ways</span>
+    Input: the art of writing clear headlines<br>
+    UPPERCASE: THE ART OF WRITING CLEAR HEADLINES<br>
+    Title Case: The Art of Writing Clear Headlines<br>
+    Capitalize Each Word: The Art Of Writing Clear Headlines<br>
+    Sentence case: The art of writing clear headlines<br>
+    aLtErNaTiNg: tHe ArT oF wRiTiNg ClEaR hEaDlInEs<br>
+    Reversed: senildaeh raelc gnitirw fo tra eht
+  </div>
+
+  <h2>When to use title case</h2>
+  <p>Title case earns its keep anywhere a heading has to look deliberate and polished: newspaper and magazine headlines, book and film titles, blog post titles, presentation slide headings, and the titles of reports and white papers. Readers subconsciously treat a title-cased heading as a <em>name</em> — a thing with importance — which is why marketing pages and book covers rely on it.</p>
+  <p>Reach for sentence case instead when the heading is really a short sentence, when your brand voice is casual, or when the heading contains a product name or technical term whose own capitalization you must preserve. Mixing the two across one website looks careless, so pick one style per site and apply it consistently — our <a href="#/faq">FAQ</a> covers the most common edge cases, and the detailed <a href="#/article/title-case-rules">title case rules</a> settle arguments about words like “with,” “from,” and hyphenated compounds.</p>
+
+  <h2>Writing style notes: capitalization done well</h2>
+  <p>Capitalization is small typography with outsized effects. A capital letter signals “this matters” or “this is a name,” so every unnecessary capital dilutes the signal. A few habits will keep your writing clean:</p>
+  <ul class="tight">
+    <li><strong>Capitalize names, not categories.</strong> “Mayor Alvarez” takes capitals; “the mayor” does not. The same goes for companies, products, days, months, and languages — but not seasons or school subjects unless they are languages. Our guide to <a href="#/article/capitalization-rules-in-english">capitalization rules in English</a> lists the full set with examples.</li>
+    <li><strong>Do not capitalize for emphasis.</strong> If a word needs weight, rewrite the sentence, use bold in digital text, or shorten the line. Random capitals mid-sentence (“We offer Premium Quality Service”) read as noise.</li>
+    <li><strong>Be consistent inside a document.</strong> One heading style, one treatment for job titles, one spelling of a product name. Consistency is what readers actually perceive as professionalism.</li>
+    <li><strong>Watch text pasted from elsewhere.</strong> PDFs, spreadsheets, and AI tools each impose their own habits. A quick pass through this converter — lowercase everything, then rebuild with sentence or title case — gives you a clean, uniform starting point.</li>
+  </ul>
+  <p>For a deeper grounding, start with the <a href="#/articles">articles library</a>: it covers title case rules, the sentence-versus-title debate, camel case and its relatives, and the core capitalization rules every writer should know.</p>
+
+  <h2>Why writers and developers keep a case converter open</h2>
+  <p>Editors use it to normalize headlines submitted by many authors. Social media managers use it to rescue captions typed in caps lock. Students use it to fix essays drafted on phones, where autocorrect quietly mangles headings. Developers use it to generate variable names, slugs, and file names in the exact convention a project demands. And anyone who has ever received an ALL-CAPS email from a relative uses it to make the message readable before replying.</p>
+  <p>Because the conversion happens entirely on your device, you can safely paste drafts, headlines, and notes of any sensitivity. There is no account, no upload, and no history — close the tab and the text is gone. If you are new to the topic, the <a href="#/about">About page</a> explains what this site is and how it works.</p>
+
+  <h2>Common questions, briefly</h2>
+  <p><strong>Is title case the same as capitalizing each word?</strong> No — title case leaves short connecting words lowercase. <strong>Should headings on my website use sentence case or title case?</strong> Either works if you are consistent; sentence case is the modern default for interfaces, title case for editorial headlines. <strong>Can I convert a whole document?</strong> Yes — paste as much text as you like. The complete answers live on the <a href="#/faq">FAQ page</a>, and the long-form explanations live in the <a href="#/articles">articles</a>.</p>
+</section>
+
+<!-- ============ ARTICLES INDEX ============ -->
+<section class="page" id="page-articles">
+  <p class="crumb"><a href="#/">Home</a> › Articles</p>
+  <h1>Articles on Case &amp; Capitalization</h1>
+  <p class="lede">Plain-language guides to the rules behind the buttons — when each case is correct, why the rules exist, and the mistakes that make writing look amateur.</p>
+  <div class="artlist">
+    <h3><a href="#/article/title-case-rules">Title Case Rules: Which Words Get a Capital Letter?</a></h3>
+    <p class="meta">Style guide · 6 min read</p>
+    <p>The complete, practical rule set for headlines: first and last words, the four-letter rule for prepositions, hyphenated compounds, subtitles after colons, and how AP, Chicago, and MLA differ.</p>
+
+    <h3><a href="#/article/sentence-case-vs-title-case">Sentence Case vs Title Case: Which Should Your Headings Use?</a></h3>
+    <p class="meta">Style guide · 5 min read</p>
+    <p>A side-by-side comparison of the two heading styles — readability research, brand tone, technical terms, and a simple decision checklist for websites, reports, and slides.</p>
+
+    <h3><a href="#/article/what-is-camel-case">What Is Camel Case? (And Pascal, Snake and Kebab Case)</a></h3>
+    <p class="meta">Explainer · 5 min read</p>
+    <p>The naming conventions of code and files explained for everyone: where camelCase came from, when PascalCase and snake_case win, and why URLs prefer kebab-case.</p>
+
+    <h3><a href="#/article/capitalization-rules-in-english">Capitalization Rules in English: The 10 Rules That Cover Almost Everything</a></h3>
+    <p class="meta">Grammar guide · 7 min read</p>
+    <p>Sentence starts, proper nouns, the pronoun “I”, titles of people, directions vs regions, seasons, languages, and quoted speech — the core rules, each with a correct and incorrect example.</p>
+  </div>
+  <p>New to the tool itself? Head back to the <a href="#/">converter</a> and try each style on your own sentence — seeing the six versions side by side teaches the differences faster than any rule list.</p>
+</section>
+
+<!-- ============ ARTICLE 1 ============ -->
+<section class="page" id="page-article-title-case-rules">
+  <p class="crumb"><a href="#/">Home</a> › <a href="#/articles">Articles</a> › Title Case Rules</p>
+  <h1>Title Case Rules: Which Words Get a Capital Letter?</h1>
+  <p class="meta">Style guide · 6 min read</p>
+  <p>Title case is the capitalization style of headlines and titles: capitalize the words that carry meaning, lowercase the small grammatical glue. Almost everyone agrees on the principle; the disagreements live in the details. This guide gives you the rules in the order you will actually apply them, then notes where the major style guides part ways.</p>
+  <h2>The core rules</h2>
+  <p><strong>1. Always capitalize the first and last words.</strong> No matter what they are. “Something to Live For” ends on a capitalized preposition because it is the last word, and “The” is capitalized at the start even though it would be lowercase mid-title.</p>
+  <p><strong>2. Capitalize all nouns, pronouns, verbs, adjectives, and adverbs.</strong> This includes short verbs like “Is” and “Be” — a common mistake is lowercasing them as if they were glue words. In “What the River Is Telling Us,” both “Is” and “Telling” are capitalized because both are verbs.</p>
+  <p><strong>3. Lowercase articles: a, an, the.</strong> Unless rule 1 applies, “the” in the middle of a title stays small: “The Lord of the Rings” capitalizes only the first “The.”</p>
+  <p><strong>4. Lowercase short prepositions.</strong> Words such as <em>in, on, at, by, for, of, to, up, off</em> stay lowercase in most styles. The dividing line is length: the Chicago Manual of Style lowercases prepositions of any length, while AP style capitalizes prepositions of four letters or more — so “Through the Night” in AP, “Through” still capitalized as it exceeds three letters, but “With” becomes “with” in Chicago and “With” in AP. When in doubt, the four-letter rule (capitalize prepositions of four or more letters) is the most widely followed compromise.</p>
+  <p><strong>5. Lowercase coordinating conjunctions: and, but, or, nor, for, so, yet.</strong> “Rock and Roll,” “Slow but Steady.” Subordinating conjunctions such as <em>as, if, than, when</em> divide the guides; capitalizing them is the safer modern choice.</p>
+  <h2>Hyphens, colons, and other traps</h2>
+  <p><strong>Hyphenated compounds:</strong> capitalize the first element always, and capitalize later elements unless they are articles or short prepositions. “Mother-in-Law,” “Step-by-Step Guide,” “Run-Down Buildings.” A prefix like “re-” or “e-” stays lowercase: “Re-Entering the Market,” “E-Commerce Basics.”</p>
+  <p><strong>Subtitles after a colon:</strong> the first word after a colon is always capitalized, whatever it is: “Deep Work: Rules for Focused Success in a Distracted World.” The same applies after a dash in most headline styles.</p>
+  <p><strong>Proper nouns keep their own spelling.</strong> “iPhone,” “eBay,” and brand names with unusual capitalization stay as the brand writes them, even at the start of a title — although at the very start of a sentence, most editors rewrite to avoid “iPhones are…” openings.</p>
+  <h2>How the big style guides differ</h2>
+  <p>AP (journalism) capitalizes words of four letters or more, including prepositions. Chicago (books) lowercases prepositions of any length and is the most detailed on hyphens. MLA (academic) is close to Chicago but capitalizes subordinating conjunctions. APA uses title case only for titles of works in reference lists, and sentence case for article titles — a frequent source of confusion. None of them is “wrong”; pick the one your publication, school, or company uses and stay with it.</p>
+  <h2>A quick workflow</h2>
+  <p>Paste your headline into the <a href="#/">CaseConverterHub converter</a> and choose Title Case — it applies the four-letter compromise automatically. Then do one human pass for brand names, hyphenated words, and any term whose official spelling you must preserve. Machines are excellent at the routine 95% of title case; the remaining 5% is editorial judgment, and it is exactly the 5% readers notice.</p>
+  <p>Related reading: <a href="#/article/sentence-case-vs-title-case">Sentence Case vs Title Case</a> · <a href="#/article/capitalization-rules-in-english">Capitalization Rules in English</a></p>
+</section>
+
+<!-- ============ ARTICLE 2 ============ -->
+<section class="page" id="page-article-sentence-case-vs-title-case">
+  <p class="crumb"><a href="#/">Home</a> › <a href="#/articles">Articles</a> › Sentence Case vs Title Case</p>
+  <h1>Sentence Case vs Title Case: Which Should Your Headings Use?</h1>
+  <p class="meta">Style guide · 5 min read</p>
+  <p>Open two websites at random and you will likely see two different heading styles. One says “How to Plan Your First Vegetable Garden.” The other says “How to plan your first vegetable garden.” The first is title case, the second sentence case — and the choice quietly shapes how professional, friendly, or formal your writing feels.</p>
+  <h2>The two styles, precisely</h2>
+  <p><strong>Title case</strong> capitalizes the first letter of all major words — nouns, verbs, adjectives, adverbs — and lowercases articles, short prepositions, and conjunctions. <strong>Sentence case</strong> treats a heading like a sentence: only the first word, proper nouns, and names get capitals. Everything else follows the normal rules of prose.</p>
+  <div class="example">
+    <span class="lbl">Same heading, both styles</span>
+    Title Case: A Beginner's Guide to Keeping Bees in the City<br>
+    Sentence case: A beginner's guide to keeping bees in the city
+  </div>
+  <h2>Readability</h2>
+  <p>Sentence case is marginally easier to scan because the shape of the line matches ordinary sentences, and readers process headings as micro-sentences. Title case, however, makes individual keywords pop — useful in tables of contents and search results where readers hunt for nouns. In practice, the readability difference is small; consistency matters far more than the choice itself.</p>
+  <h2>Tone and tradition</h2>
+  <p>Title case carries the authority of print: newspapers, books, and academic journals have used it for centuries, so it reads as formal and established. Sentence case is the native style of the modern web — Google, Apple, Microsoft, and the BBC's digital services all use it for interface text and most headlines — so it reads as current, plain-spoken, and approachable. A law firm and a language-learning app should probably not make the same choice.</p>
+  <h2>The technical-term problem</h2>
+  <p>Sentence case has one real hazard: headings full of names and terms whose capitalization is fixed. “How to sync your iPhone with iCloud” works, but “Installing Docker on Ubuntu with Nginx” needs three editorial decisions in title case too — proper nouns are capitalized in both styles, so this is a wash. Where sentence case genuinely wins is headings containing acronyms or code, because there are fewer capitals competing for attention.</p>
+  <h2>A simple decision checklist</h2>
+  <ul class="tight">
+    <li>Formal publication, book, report, or press release? <strong>Title case.</strong></li>
+    <li>App, website interface, help center, or product UI? <strong>Sentence case.</strong></li>
+    <li>Blog or magazine? Either — but check what your three closest competitors do, and match the convention your readers already expect.</li>
+    <li>Team of many authors? Sentence case is easier to apply correctly, because the <a href="#/article/title-case-rules">title case rules</a> have more edge cases to get wrong.</li>
+  </ul>
+  <p>Whichever you choose, apply it everywhere: page titles, headings, buttons, and image captions. Then use the <a href="#/">converter</a> to normalize older content — paste a heading, convert, and paste it back. Ten minutes of normalization makes an entire site feel newly edited.</p>
+  <p>Related reading: <a href="#/article/title-case-rules">Title Case Rules</a> · <a href="#/article/capitalization-rules-in-english">Capitalization Rules in English</a></p>
+</section>
+
+<!-- ============ ARTICLE 3 ============ -->
+<section class="page" id="page-article-what-is-camel-case">
+  <p class="crumb"><a href="#/">Home</a> › <a href="#/articles">Articles</a> › What Is Camel Case?</p>
+  <h1>What Is Camel Case? (And Pascal, Snake and Kebab Case)</h1>
+  <p class="meta">Explainer · 5 min read</p>
+  <p>Computers are unforgiving about spaces. A file named “holiday photos 2024” breaks old tools, and a variable named “user name” is simply illegal in most programming languages. Writers of code solved the problem by gluing words together and using capitalization — or underscores, or hyphens — to show where each word begins. The resulting styles have animal names and strong opinions attached.</p>
+  <h2>camelCase</h2>
+  <p>In camel case, the first word is lowercase and every following word starts with a capital: <em>userName</em>, <em>totalPrice</em>, <em>numberOfItems</em>. The humps of the capitals in the middle are said to resemble a camel. Camel case is the default for variables and functions in JavaScript, Java, and many other languages, and it appears in brand names too — iPhone and eBay are camel case that escaped into the wild. Our <a href="#/">converter</a> produces it with the camelCase button: paste “number of items” and get “numberOfItems.”</p>
+  <h2>PascalCase</h2>
+  <p>Pascal case is camel case with the first word capitalized too: <em>UserName</em>, <em>TotalPrice</em>, <em>ShoppingCart</em>. Named after the Pascal programming language, it is conventionally reserved for bigger things — class names, components, and types — so a reader can tell at a glance that <em>ShoppingCart</em> is a blueprint and <em>shoppingCart</em> is one specific cart.</p>
+  <h2>snake_case</h2>
+  <p>Snake case keeps everything lowercase and separates words with underscores: <em>user_name</em>, <em>total_price</em>. It is the house style of Python and Ruby, and of database column names everywhere, because it stays perfectly readable without any capitals at all. A shouting variant, SCREAMING_SNAKE_CASE, is reserved for constants — values that never change.</p>
+  <h2>kebab-case</h2>
+  <p>Kebab case uses hyphens instead: <em>user-name</em>, <em>total-price</em>. The words are the meat, the hyphens the skewer. Kebab case owns the web's addresses — URLs like <em>caseconverterhub.github.io/title-case-rules</em> — because hyphens are what search engines recommend as word separators in links, and because hyphens never require the shift key.</p>
+  <h2>Which one should you use?</h2>
+  <ul class="tight">
+    <li><strong>Writing code?</strong> Follow your language's convention: camelCase for JavaScript variables, snake_case for Python, PascalCase for classes almost everywhere.</li>
+    <li><strong>Naming files?</strong> Kebab-case or snake_case, all lowercase — safest across every operating system and web server.</li>
+    <li><strong>Writing a URL or slug?</strong> Kebab-case, always.</li>
+    <li><strong>Naming a product feature?</strong> That is branding, not code — but notice how many tech brands borrow camel case to look engineered.</li>
+  </ul>
+  <p>All four styles are in the <a href="#/">converter</a> alongside the prose styles, so you can turn any plain phrase into any convention in one click. If capitalization in ordinary writing is your bigger headache, see the <a href="#/article/capitalization-rules-in-english">capitalization rules</a> guide next.</p>
+  <p>Related reading: <a href="#/article/title-case-rules">Title Case Rules</a> · <a href="#/article/sentence-case-vs-title-case">Sentence Case vs Title Case</a></p>
+</section>
+
+<!-- ============ ARTICLE 4 ============ -->
+<section class="page" id="page-article-capitalization-rules-in-english">
+  <p class="crumb"><a href="#/">Home</a> › <a href="#/articles">Articles</a> › Capitalization Rules in English</p>
+  <h1>Capitalization Rules in English: The 10 Rules That Cover Almost Everything</h1>
+  <p class="meta">Grammar guide · 7 min read</p>
+  <p>English capitalization looks arbitrary until you see the pattern: capitals mark beginnings and names. Everything else is detail. These ten rules cover the overwhelming majority of real-world writing; each comes with the mistake people actually make.</p>
+  <h2>The rules</h2>
+  <p><strong>1. Capitalize the first word of a sentence.</strong> Including after a full stop inside abbreviations sparingly — and the first word of a quoted sentence: She asked, “Where are the keys?”</p>
+  <p><strong>2. Capitalize proper nouns — names of specific people, places, and organizations.</strong> “River Thames,” “the University of Oxford,” “Nike.” The generic words stay small when they stand alone: “the river,” “a university.”</p>
+  <p><strong>3. Always capitalize the pronoun “I.”</strong> English is unusual here; it is never “i think.” This is the single most common capitalization error in informal writing.</p>
+  <p><strong>4. Capitalize days, months, and holidays — but not seasons.</strong> “Monday,” “October,” “Diwali,” but “spring,” “summer,” “autumn,” “winter.”</p>
+  <p><strong>5. Capitalize languages and nationalities.</strong> “She speaks Urdu and French.” School subjects follow the same logic: “history” is lowercase, but “English” is capitalized because it is a language.</p>
+  <p><strong>6. Capitalize titles of people when they come before a name.</strong> “Dr. Chen,” “President Ahmed,” “Aunt Maria.” When the title stands alone or follows the name, it goes lowercase in most styles: “the president,” “Maria, my aunt.” Family words are capitalized when used as a name — “I told Mother” — but not with a possessive: “I told my mother.”</p>
+  <p><strong>7. Capitalize regions, not compass directions.</strong> “He moved to the South” (a region) but “drive south for two miles” (a direction). Same with “the West” versus “the west wind.”</p>
+  <p><strong>8. Capitalize the first word and major words of titles of works</strong> — books, films, articles, songs. This is title case, and it has its own full rule set in our <a href="#/article/title-case-rules">title case guide</a>.</p>
+  <p><strong>9. Capitalize historical eras and events.</strong> “the Renaissance,” “World War II,” “the Bronze Age” — but generic references stay small: “the war,” “ancient times.”</p>
+  <p><strong>10. Do not capitalize for emphasis or importance.</strong> “Quality,” “Service,” and “Best Prices” do not earn capitals by being things you care about. This “significance capitalization” is the mark of amateur business writing; resist it.</p>
+  <h2>A repair workflow for messy text</h2>
+  <p>Inherited a document where the capitals are chaos? Do not fix it word by word. Paste it into the <a href="#/">converter</a>, drop it all to lowercase to reset every decision, then apply sentence case to rebuild the sentence starts. Finally, scan once for names — people, places, brands, languages — and restore their capitals by hand. Three passes, and even the messiest draft reads clean. For headings, finish with the <a href="#/article/sentence-case-vs-title-case">sentence case vs title case</a> decision and apply one style throughout.</p>
+  <p>Related reading: <a href="#/article/title-case-rules">Title Case Rules</a> · <a href="#/article/what-is-camel-case">What Is Camel Case?</a></p>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="page" id="page-faq">
+  <p class="crumb"><a href="#/">Home</a> › FAQ</p>
+  <h1>Frequently Asked Questions</h1>
+  <p class="lede">Short answers about the converter and about capitalization itself. For the long versions, see the <a href="#/articles">articles</a>.</p>
+  <details><summary>Is CaseConverterHub free to use?</summary><p>Yes, completely. There is no account, no limit on text length in normal use, and no premium tier. Paste, convert, copy — as often as you like.</p></details>
+  <details><summary>Is my text uploaded or stored anywhere?</summary><p>No. All conversion happens in your browser with JavaScript. Your text is never sent to a server, logged, or saved. When you close the tab, it is gone.</p></details>
+  <details><summary>What is the difference between Title Case and Capitalize Each Word?</summary><p>Title Case capitalizes only the important words and leaves small words like “the,” “and,” and “of” lowercase in the middle of a heading. Capitalize Each Word capitalizes literally every word. See the <a href="#/article/title-case-rules">title case rules</a> for the full breakdown.</p></details>
+  <details><summary>How does the Sentence case button handle proper nouns?</summary><p>It capitalizes the first letter of every sentence and lowercases everything else, including names it cannot know are names. After converting, restore capitals on names of people, places, and brands — it takes seconds and is the one step no tool can fully automate.</p></details>
+  <details><summary>Which style should headings on my website use?</summary><p>Sentence case for interfaces and modern, friendly brands; title case for formal, editorial, or traditional contexts. The full comparison is in <a href="#/article/sentence-case-vs-title-case">Sentence Case vs Title Case</a>. Consistency across your site matters more than the choice.</p></details>
+  <details><summary>What does “Remove Extra Spaces” actually remove?</summary><p>It collapses runs of spaces and tabs into a single space, trims the start and end of every line, removes spaces before punctuation, and tidies blank lines — the typical damage left by copying text out of PDFs and emails.</p></details>
+  <details><summary>How does alternating case decide which letters are capitals?</summary><p>It alternates strictly letter by letter, ignoring spaces and punctuation, starting with a lowercase letter: aLtErNaTiNg. Numbers and symbols pass through unchanged.</p></details>
+  <details><summary>Can I convert a whole document at once?</summary><p>Yes. Paste multiple paragraphs — the converter handles the entire text in one pass, and the live counts show characters, words, sentences, and lines as you type.</p></details>
+  <details><summary>What is camel case used for?</summary><p>Camel case (likeThis) is a naming convention for variables and functions in programming, and for some brand names. The <a href="#/article/what-is-camel-case">camel case explainer</a> covers it alongside Pascal, snake, and kebab case.</p></details>
+  <details><summary>Does the word counter count words in the output too?</summary><p>The live counters describe the input box, updating as you type. The counts stay visible while you convert, so you can check length before and after an edit.</p></details>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="page-about">
+  <p class="crumb"><a href="#/">Home</a> › About</p>
+  <h1>About CaseConverterHub</h1>
+  <p>CaseConverterHub is a small, focused tool with one job: fixing capitalization. It exists because the problem shows up everywhere — a headline typed in a hurry, an email written with caps lock on, a document pasted out of a PDF with its formatting in ruins — and because fixing it by hand is exactly the kind of fiddly, error-prone work a computer should do.</p>
+  <p>The converter handles the styles writers and developers actually need: UPPERCASE and lowercase for quick resets, Title Case and Sentence case for headings, Capitalize Each Word for labels, alternating case for playful posts, camel, Pascal, snake, and kebab case for code and file names, plus the two great tidiers — extra-space removal and reverse text. Word, character, sentence, and line counts update live, because half the time the real question is not just “what case?” but “how long is this?”</p>
+  <p>Everything runs on your device. There is no server receiving your text, no account system, and nothing to install. The site also keeps a small library of original <a href="#/articles">articles</a> explaining the rules behind the buttons, written for people who want to get capitalization right themselves, not just fix it after the fact.</p>
+  <p>Questions or suggestions are welcome via the <a href="#/contact">Contact page</a>.</p>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact">
+  <p class="crumb"><a href="#/">Home</a> › Contact</p>
+  <h1>Contact</h1>
+  <p>Found a conversion that looks wrong? Have a case style you wish the tool supported? Want to suggest an article topic? We read everything.</p>
+  <p>Email: <a href="mailto:hello@caseconverterhub.github.io">hello@caseconverterhub.github.io</a></p>
+  <p>When reporting a conversion problem, it helps to include the exact text you pasted and the button you pressed — capitalization bugs are almost always about one specific word or punctuation mark, and an example lets us reproduce it immediately.</p>
+  <p>Please note that we cannot recover converted text: because nothing is uploaded or stored (see the <a href="#/privacy">Privacy Policy</a>), the text exists only in your own browser tab.</p>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section class="page" id="page-privacy">
+  <p class="crumb"><a href="#/">Home</a> › Privacy Policy</p>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: 2026</p>
+  <p>CaseConverterHub is designed to collect as little as possible — in practice, nothing about your text at all.</p>
+  <h2>Your text</h2>
+  <p>All case conversion happens locally in your browser using JavaScript. Text you paste or type is never transmitted to us or to any third party, never stored on a server, and never written to any database or log. Closing or refreshing the page discards it.</p>
+  <h2>Accounts and cookies</h2>
+  <p>The site has no accounts, no sign-up, and sets no tracking cookies of its own. Standard web hosting may keep brief technical server logs (such as IP address and browser type) for security and reliability, as virtually all websites do; these logs never contain the text you convert.</p>
+  <h2>External links</h2>
+  <p>Pages may link to external resources. We are not responsible for the privacy practices of other websites.</p>
+  <h2>Changes</h2>
+  <p>If this policy changes, the updated version will be posted on this page with a revised date. Questions about privacy can be sent through the <a href="#/contact">Contact page</a>.</p>
+</section>
+
+<!-- ============ TERMS ============ -->
+<section class="page" id="page-terms">
+  <p class="crumb"><a href="#/">Home</a> › Terms of Use</p>
+  <h1>Terms of Use</h1>
+  <p class="meta">Last updated: 2026</p>
+  <p>By using CaseConverterHub you agree to these simple terms.</p>
+  <h2>The service</h2>
+  <p>CaseConverterHub provides a free text case conversion tool and educational articles about capitalization and writing style. The service is provided “as is,” without warranties of any kind. Conversions follow common style conventions, but no automated tool can judge every proper noun, brand name, or editorial context — you are responsible for reviewing converted text before publishing it.</p>
+  <h2>Acceptable use</h2>
+  <p>You may use the tool for personal, educational, and commercial writing. You agree not to attempt to disrupt the site or misrepresent its output as coming from another source.</p>
+  <h2>Content</h2>
+  <p>The articles on this site are original to CaseConverterHub and may be quoted briefly with a link back. You retain all rights to text you create or convert with the tool; we claim no ownership over your input or output — indeed, we never receive it (see the <a href="#/privacy">Privacy Policy</a>).</p>
+  <h2>Liability</h2>
+  <p>To the maximum extent permitted by law, CaseConverterHub is not liable for any loss arising from use of the tool or reliance on the articles. If any part of these terms is unenforceable, the remaining parts continue to apply.</p>
+</section>
+
+<!-- ============ DISCLAIMER ============ -->
+<section class="page" id="page-disclaimer">
+  <p class="crumb"><a href="#/">Home</a> › Disclaimer</p>
+  <h1>Disclaimer</h1>
+  <p class="meta">Last updated: 2026</p>
+  <p>The information and tools on CaseConverterHub are provided for general educational and productivity purposes.</p>
+  <p><strong>Style guidance, not authority.</strong> Capitalization conventions differ between style guides (AP, Chicago, MLA, APA), countries, and organizations. The rules and conversions presented here follow widely used conventions, but your publisher, school, employer, or client may require a different style, and their requirements take precedence.</p>
+  <p><strong>Review before publishing.</strong> Automated conversion cannot recognize every proper noun, brand spelling, or intentional stylistic choice. Always proofread converted text — particularly names, titles, and technical terms — before using it in print or publication.</p>
+  <p><strong>No professional advice.</strong> Nothing on this site constitutes legal, academic, or professional editorial advice. For high-stakes documents, consult your organization's style guide or a professional editor.</p>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap footer-in">
+    <nav aria-label="Footer">
+      <a href="#/">Converter</a>
+      <a href="#/articles">Articles</a>
+      <a href="#/faq">FAQ</a>
+      <a href="#/about">About</a>
+      <a href="#/contact">Contact</a>
+      <a href="#/privacy">Privacy Policy</a>
+      <a href="#/terms">Terms of Use</a>
+      <a href="#/disclaimer">Disclaimer</a>
+    </nav>
+    <p>© 2026 CaseConverterHub. Free text case converter — your text never leaves your browser.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var input = document.getElementById('inputText');
+  var output = document.getElementById('outputText');
+  var toast = document.getElementById('toast');
+
+  var SMALL_WORDS = {a:1, an:1, the:1, and:1, but:1, or:1, nor:1, for:1, so:1, yet:1,
+    at:1, by:1, in:1, of:1, on:1, to:1, up:1, off:1, per:1, via:1, as:1, into:1, over:1, with:1, from:1, upon:1, onto:1};
+
+  function capWord(w){
+    if(!w) return w;
+    // Capitalize first alphabetic char, lowercase rest of the segment
+    return w.replace(/[A-Za-z]/, function(c){ return c.toUpperCase(); });
+  }
+  function lowerRest(w){
+    return w.toLowerCase();
+  }
+  function capitalizeWordFull(w){
+    // capitalize first letter, lowercase remaining letters of the word (keeps punctuation)
+    var done = false;
+    return w.replace(/[A-Za-z]+/g, function(seg){
+      if(!done){ done = true; return seg.charAt(0).toUpperCase() + seg.slice(1).toLowerCase(); }
+      return seg.toLowerCase();
+    });
+  }
+  function eachWord(text){
+    return text.replace(/\S+/g, function(w){ return capitalizeWordFull(w); });
+  }
+  function titleCase(text){
+    var words = text.split(/(\s+)/); // keep whitespace tokens
+    var wordIdx = [];
+    for(var i=0;i<words.length;i++){ if(/\S/.test(words[i])) wordIdx.push(i); }
+    var first = wordIdx[0], last = wordIdx[wordIdx.length-1];
+    return words.map(function(tok, i){
+      if(!/\S/.test(tok)) return tok;
+      // Word right after a colon or dash starts a subtitle: always capitalize.
+      var prevTok = '';
+      for(var k=i-1;k>=0;k--){ if(/\S/.test(words[k])){ prevTok = words[k]; break; } }
+      var afterPunct = /[:—–]$/.test(prevTok);
+      return tok.replace(/[A-Za-z][A-Za-z'’-]*/g, function(word, offset, full){
+        var lw = word.toLowerCase();
+        var isEdge = (i===first || i===last || (afterPunct && offset===0));
+        var isFirstWordPart = (offset===0);
+        // hyphenated parts: capitalize each part unless small word in middle
+        var parts = word.split('-');
+        if(parts.length > 1){
+          return parts.map(function(p, pi){
+            var lp = p.toLowerCase();
+            if(pi>0 && SMALL_WORDS[lp] && !isEdge) return lp;
+            return p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+          }).join('-');
+        }
+        if(!isEdge && !isFirstWordPart && SMALL_WORDS[lw]) return lw;
+        if(!isEdge && isFirstWordPart && SMALL_WORDS[lw] && wordIdx.length>1 && i!==first){
+          // word in middle of title: small word stays lowercase
+          return lw;
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      });
+    }).join('');
+  }
+  function sentenceCase(text){
+    var t = text.toLowerCase();
+    return t.replace(/(^\s*[a-z])|([.!?]\s+[a-z])/g, function(m){ return m.toUpperCase(); });
+  }
+  function alternating(text){
+    var upper = false, out = '';
+    for(var i=0;i<text.length;i++){
+      var c = text.charAt(i);
+      if(/[a-zA-Z]/.test(c)){ out += upper ? c.toUpperCase() : c.toLowerCase(); upper = !upper; }
+      else out += c;
+    }
+    return out;
+  }
+  function wordsOf(text){
+    var m = text.toLowerCase().match(/[a-z0-9]+(?:['’][a-z]+)?/g);
+    return m || [];
+  }
+  function camel(text){
+    var w = wordsOf(text); if(!w.length) return '';
+    return w[0] + w.slice(1).map(function(x){ return x.charAt(0).toUpperCase()+x.slice(1); }).join('');
+  }
+  function pascal(text){
+    return wordsOf(text).map(function(x){ return x.charAt(0).toUpperCase()+x.slice(1); }).join('');
+  }
+  function snake(text){ return wordsOf(text).join('_'); }
+  function kebab(text){ return wordsOf(text).join('-'); }
+  function removeSpaces(text){
+    return text.split('\n').map(function(line){
+      return line.replace(/[ \t]+/g,' ').replace(/\s+([,.!?;:])/g,'$1').trim();
+    }).join('\n').replace(/\n{3,}/g,'\n\n').trim();
+  }
+  function reverseText(text){
+    return text.split('').reverse().join('');
+  }
+
+  var converters = {
+    upper: function(t){ return t.toUpperCase(); },
+    lower: function(t){ return t.toLowerCase(); },
+    title: titleCase,
+    sentence: sentenceCase,
+    eachword: eachWord,
+    alternating: alternating,
+    camel: camel,
+    pascal: pascal,
+    snake: snake,
+    kebab: kebab,
+    spaces: removeSpaces,
+    reverse: reverseText
+  };
+
+  function showToast(msg){
+    toast.textContent = msg; toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 2600);
+  }
+
+  function updateStats(){
+    var t = input.value;
+    document.getElementById('statChars').textContent = t.length;
+    document.getElementById('statNoSpaces').textContent = t.replace(/\s/g,'').length;
+    var w = t.trim() ? t.trim().split(/\s+/).length : 0;
+    document.getElementById('statWords').textContent = w;
+    var s = t.match(/[^.!?]+[.!?]+/g);
+    document.getElementById('statSentences').textContent = s ? s.length : (t.trim() ? 1 : 0);
+    document.getElementById('statLines').textContent = t ? t.split('\n').length : 0;
+  }
+  input.addEventListener('input', updateStats);
+  updateStats();
+
+  var btns = document.querySelectorAll('[data-convert]');
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click', function(){
+      var kind = this.getAttribute('data-convert');
+      if(!input.value){ showToast('Paste or type some text first, then choose a conversion.'); input.focus(); return; }
+      output.value = converters[kind](input.value);
+    });
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    if(!output.value){ showToast('Nothing to copy yet — convert your text first.'); return; }
+    function done(){ showToast('Copied to clipboard.'); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(output.value).then(done, function(){ fallback(); });
+    } else fallback();
+    function fallback(){
+      output.removeAttribute('readonly'); output.select();
+      try{ document.execCommand('copy'); done(); }catch(e){ showToast('Copy failed — select the result and copy manually.'); }
+      output.setAttribute('readonly',''); window.getSelection().removeAllRanges();
+    }
+  });
+  document.getElementById('downloadBtn').addEventListener('click', function(){
+    if(!output.value){ showToast('Nothing to download yet — convert your text first.'); return; }
+    var blob = new Blob([output.value], {type:'text/plain'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'converted-text.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  });
+  document.getElementById('useAsInputBtn').addEventListener('click', function(){
+    if(!output.value){ showToast('No result yet to move into the input box.'); return; }
+    input.value = output.value; output.value = ''; updateStats();
+    showToast('Result moved to the input box — chain another conversion.');
+  });
+  document.getElementById('clearBtn').addEventListener('click', function(){
+    input.value=''; output.value=''; updateStats(); input.focus();
+  });
+
+  // ---- Hash router ----
+  var routes = {
+    '': 'home', '/': 'home',
+    '/articles': 'articles',
+    '/article/title-case-rules': 'article-title-case-rules',
+    '/article/sentence-case-vs-title-case': 'article-sentence-case-vs-title-case',
+    '/article/what-is-camel-case': 'article-what-is-camel-case',
+    '/article/capitalization-rules-in-english': 'article-capitalization-rules-in-english',
+    '/faq': 'faq', '/about': 'about', '/contact': 'contact',
+    '/privacy': 'privacy', '/terms': 'terms', '/disclaimer': 'disclaimer'
+  };
+  var navFor = { home:'home', articles:'articles',
+    'article-title-case-rules':'articles','article-sentence-case-vs-title-case':'articles',
+    'article-what-is-camel-case':'articles','article-capitalization-rules-in-english':'articles',
+    faq:'faq', about:'about', contact:'contact' };
+  function route(){
+    var hash = location.hash.replace(/^#/,'');
+    var key = routes.hasOwnProperty(hash) ? hash : '/';
+    var page = routes[key];
+    var pages = document.querySelectorAll('.page');
+    for(var i=0;i<pages.length;i++) pages[i].classList.remove('on');
+    var el = document.getElementById('page-'+page);
+    if(el) el.classList.add('on');
+    var navs = document.querySelectorAll('[data-nav]');
+    for(var j=0;j<navs.length;j++){
+      navs[j].classList.toggle('active', navs[j].getAttribute('data-nav') === navFor[page]);
+    }
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+</body>
+</html>

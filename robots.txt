@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caseconverterhub.github.io/sitemap.xml
